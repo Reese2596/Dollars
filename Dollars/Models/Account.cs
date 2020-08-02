@@ -27,4 +27,10 @@ namespace Dollars.Models
         [EmailAddress]
         public string Email { get; set; }
     }
+
+
+    public class AdminAccount : Account
+    {
+        public string BirthDay { get; set; }
+    }
 }
