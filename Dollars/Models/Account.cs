@@ -20,6 +20,7 @@ namespace Dollars.Models
         [StringLength(20)]
         public string Username { get; set; }
 
+        [Required]
         [StringLength(150)]
         [DataType(DataType.Password)]   //input => type password
         public string Password { get; set; }
