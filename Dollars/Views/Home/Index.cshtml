@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+    <div class="text-center">
+        <img src="~/Img/dollar.jpg" width="500" height="500" /><br />
+        <label class="text-light">Password: </label>
+        <div class="form-group">
+            <label asp-for="Input.Password"></label>
+            <input asp-for="Input.Password" class="form-control" />
+            <span asp-validation-for="Input.Password" class="text-danger"></span>
+        </div>
+
+            <h1>About</h1>
+            <hr />
+            <p class="paragraph h3 text-light">
+                This website gives users a way to track several different kinds of data and show that data visually through graphs.
+                They can update it at any time and make as many data tracking graphs as they desire.
+            </p>
+
+            <h1>Features</h1>
+            <hr />
+            <p class="paragraph h3 text-light">
+                Coming soon..
+            </p>
+    </div>
