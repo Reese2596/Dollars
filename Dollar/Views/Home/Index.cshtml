@@ -1,19 +1,14 @@
-﻿@{
+﻿
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
     <img src="~/Images/dollar.jpg" width="500" height="500" /><br />
-    
-    <div class="form-group">
-        <label></label>
-        <input asp-area="/Model" asp-page="" class="form-control" />
-        <span class="text-danger"></span><br />
-        <input class="btn btn-light" type="submit" value="Submit">
-    </div>
+    <partial @Html.Partial("_LoginPartial")></partial>
 
     <div class="row">
-        <h1>About</h1>
+        <h1 class="text-light">About</h1>
     </div>
     <hr />
     <p class="paragraph h3 text-light">
@@ -22,7 +17,7 @@
     </p>
 
     <div class="row">
-        <h1>Features</h1>
+        <h1 class="text-light">Features</h1>
     </div>
     <hr />
     <p class="paragraph h3 text-light">

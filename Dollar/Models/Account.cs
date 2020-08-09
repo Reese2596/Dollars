@@ -11,20 +11,63 @@ namespace Dollar.Models
         [Key]
         public int AccountID { get; set; }
 
-        [StringLength(60)]
-        /// <summary>
-        /// First and last name
-        /// </summary>
-        public string FullName { get; set; }
-
-        [StringLength(20)]
-        public string Username { get; set; }
-
-        [StringLength(150)]
-        [DataType(DataType.Password)]   //input => type password
-        public string Password { get; set; }
-
+        [Required]
         [EmailAddress]
         public string Email { get; set; }
+
+        [Required]
+        [StringLength(20)]
+        // Display name is a username
+        public string DisplayName { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+
+        [DataType(DataType.Date)]
+        public string DOB { get; set; }
+    }
+
+    public class CreateAccountViewModel
+    {
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
+
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Confirm Email")]
+        public string ConfirmEmail { get; set; }
+
+        [Required]
+        [StringLength(20)]
+        [Display(Name = "Display Name")]
+        public string DisplayName { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+
+        [DataType(DataType.Date)]
+        public string DOB { get; set; }
+    }
+
+    public class LoginViewModel
+    {
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+
+        [Required]
+        [StringLength(20)]
+        // Display name is a username
+        public string DisplayName { get; set; }
+
+        [DataType(DataType.Date)]
+        public string DOB { get; set; }
     }
 }
