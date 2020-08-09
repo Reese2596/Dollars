@@ -79,9 +79,9 @@ namespace Dollar
 
             IdentityHelper.CreateRoles(serviceProvider.ServiceProvider
                                      , IdentityHelper.ManagementRole
-                                     , IdentityHelper.UserRole).Wait();
+                                     , IdentityHelper.UserRole).GetAwaiter().GetResult();
 
-            IdentityHelper.CreateDefaultInstructor(serviceProvider.ServiceProvider).Wait();
+            IdentityHelper.CreateDefaultInstructor(serviceProvider.ServiceProvider).GetAwaiter().GetResult();
         }
     }
 }
