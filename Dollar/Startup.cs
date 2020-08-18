@@ -12,6 +12,8 @@ using Dollar.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore.Migrations.Operations;
+using Dollar.Models;
 
 namespace Dollar
 {
@@ -35,6 +37,10 @@ namespace Dollar
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+            services.Configure<IdentityOptions>(option =>
+            {
+                option.Password.RequiredLength = 8;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -66,6 +72,17 @@ namespace Dollar
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+
+            //Create Roles
+            IServiceScope serviceProvider = app.ApplicationServices
+                                     .GetRequiredService<IServiceProvider>()
+                                     .CreateScope();
+
+            IdentityHelper.CreateRoles(serviceProvider.ServiceProvider
+                                     , IdentityHelper.ManagementRole
+                                     , IdentityHelper.UserRole).GetAwaiter().GetResult();
+
+            IdentityHelper.CreateDefaultInstructor(serviceProvider.ServiceProvider).GetAwaiter().GetResult();
         }
     }
 }
